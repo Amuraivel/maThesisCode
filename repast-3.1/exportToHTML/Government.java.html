@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>Government.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { }
+.s2 { color: rgb(128,128,128); font-style: italic; }
+.s3 { color: rgb(0,0,255); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+Government.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<a name="l1"><span class="ln">1    </span></a><span class="s0">import </span><span class="s1">java.util.ArrayList; 
+<a name="l2"><span class="ln">2    </span></a> 
+<a name="l3"><span class="ln">3    </span></a></span><span class="s2">/** 
+<a name="l4"><span class="ln">4    </span></a> * Created in IntelliJ IDEA. 
+<a name="l5"><span class="ln">5    </span></a> * Government.java 
+<a name="l6"><span class="ln">6    </span></a> * Copyright Jul 10, 2008 Mark James Thompson 
+<a name="l7"><span class="ln">7    </span></a> */</span><span class="s1"> 
+<a name="l8"><span class="ln">8    </span></a></span><span class="s0">public class </span><span class="s1">Government { 
+<a name="l9"><span class="ln">9    </span></a>    </span><span class="s2">//Key political variables</span><span class="s1"> 
+<a name="l10"><span class="ln">10   </span></a>    </span><span class="s0">double </span><span class="s1">marginalCorruption = </span><span class="s3">.5</span><span class="s1">; </span><span class="s2">// 0&lt;mC&lt;1</span><span class="s1"> 
+<a name="l11"><span class="ln">11   </span></a>    </span><span class="s0">double </span><span class="s1">barriersToEntry;  </span><span class="s2">// 1&lt;bTEC</span><span class="s1"> 
+<a name="l12"><span class="ln">12   </span></a>    </span><span class="s2">//Show tradeoff between public goods and tax</span><span class="s1"> 
+<a name="l13"><span class="ln">13   </span></a>    </span><span class="s0">double </span><span class="s1">taxRate; </span><span class="s2">//unimplemented</span><span class="s1"> 
+<a name="l14"><span class="ln">14   </span></a>    </span><span class="s0">double </span><span class="s1">revenue; </span><span class="s2">//unimplemented</span><span class="s1"> 
+<a name="l15"><span class="ln">15   </span></a>    </span><span class="s0">double </span><span class="s1">publicGoods = </span><span class="s3">2</span><span class="s1">;  </span><span class="s2">//</span><span class="s1"> 
+<a name="l16"><span class="ln">16   </span></a>    </span><span class="s0">double </span><span class="s1">responsiveness; </span><span class="s2">//static régime variable which reduces barriers + corruption</span><span class="s1"> 
+<a name="l17"><span class="ln">17   </span></a>    </span><span class="s0">double </span><span class="s1">redTapeEntry; </span><span class="s2">//entry cost for businesses Melitz (2003: 1699, #5, f)</span><span class="s1"> 
+<a name="l18"><span class="ln">18   </span></a>    </span><span class="s0">double </span><span class="s1">depreciation; 
+<a name="l19"><span class="ln">19   </span></a>    </span><span class="s0">double </span><span class="s1">overhead; 
+<a name="l20"><span class="ln">20   </span></a>    </span><span class="s2">//public double[][] tariffs = new double[1][1]; //Bilateral tariffs from Country A to Country B, NxN country extensibility hook</span><span class="s1"> 
+<a name="l21"><span class="ln">21   </span></a> 
+<a name="l22"><span class="ln">22   </span></a>    </span><span class="s2">//Governmental initialization with a few of our institutional variables</span><span class="s1"> 
+<a name="l23"><span class="ln">23   </span></a>    Government(</span><span class="s0">double </span><span class="s1">overhead, </span><span class="s0">double </span><span class="s1">depreciation, </span><span class="s0">double </span><span class="s1">redTapeEntry) { 
+<a name="l24"><span class="ln">24   </span></a>        </span><span class="s0">this</span><span class="s1">.overhead = overhead; 
+<a name="l25"><span class="ln">25   </span></a>        </span><span class="s0">this</span><span class="s1">.depreciation = depreciation; 
+<a name="l26"><span class="ln">26   </span></a>        </span><span class="s0">this</span><span class="s1">.redTapeEntry = redTapeEntry; 
+<a name="l27"><span class="ln">27   </span></a>    } 
+<a name="l28"><span class="ln">28   </span></a> 
+<a name="l29"><span class="ln">29   </span></a>    </span><span class="s0">public static void </span><span class="s1">collectTaxRevenue(ArrayList&lt;Economy&gt; countryEconomies, </span><span class="s0">int </span><span class="s1">countryIndex, </span><span class="s0">int </span><span class="s1">time) { 
+<a name="l30"><span class="ln">30   </span></a>        <a href="Economy.java.html">Economy</a> country = countryEconomies.get(countryIndex); 
+<a name="l31"><span class="ln">31   </span></a>        </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s3">0</span><span class="s1">; i &lt; countryEconomies.get(countryIndex).manufacturers.size(); i++) { 
+<a name="l32"><span class="ln">32   </span></a>            </span><span class="s0">double </span><span class="s1">profit = <a href="Firm.java.html">Firm</a>.profit(countryEconomies.get(countryIndex).manufacturers.get(i), countryEconomies, countryIndex, time); 
+<a name="l33"><span class="ln">33   </span></a>            country.government.revenue += profit * country.government.taxRate; 
+<a name="l34"><span class="ln">34   </span></a>        } 
+<a name="l35"><span class="ln">35   </span></a> 
+<a name="l36"><span class="ln">36   </span></a>    } 
+<a name="l37"><span class="ln">37   </span></a>} 
+<a name="l38"><span class="ln">38   </span></a></span></pre>
+</body>
+</html>

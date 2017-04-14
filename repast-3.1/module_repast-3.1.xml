@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="module_repast-3.1" default="compile.module.repast-3.1">
+  <dirname property="module.repast-3.1.basedir" file="${ant.file.module_repast-3.1}"/>
+  
+  
+  <property name="compiler.args.repast-3.1" value="${compiler.args}"/>
+  
+  <property name="repast-3.1.output.dir" value="${module.repast-3.1.basedir}/../../../../../../o/out/production/repast-3.1"/>
+  <property name="repast-3.1.testoutput.dir" value="${module.repast-3.1.basedir}/../../../../../../o/out/test/repast-3.1"/>
+  
+  <path id="repast-3.1.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="repast-3.1.module.classpath">
+    <pathelement location="${module.repast-3.1.basedir}/repast.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/JTS.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/plot.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/jep-2.24.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/log4j-1.2.8.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/junit.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/ibis.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/commons-logging.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/jode-1.1.2-pre1.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/commons-collections.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/OpenForecast-0.4.0.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/asm.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/beanbowl.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/jh.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/trove.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/geotools_repast.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/violinstrings-1.0.2.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/jgap.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/joone.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/jmf.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/jakarta-poi.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/openmap.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/ProActive.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/colt.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/demos/demos.jar"/>
+  </path>
+  
+  <path id="repast-3.1.runtime.module.classpath">
+    <pathelement location="${module.repast-3.1.basedir}/repast.jar"/>
+    <pathelement location="${repast-3.1.output.dir}"/>
+    <pathelement location="${repast-3.1.testoutput.dir}"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/JTS.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/plot.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/jep-2.24.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/log4j-1.2.8.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/junit.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/ibis.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/commons-logging.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/jode-1.1.2-pre1.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/commons-collections.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/OpenForecast-0.4.0.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/asm.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/beanbowl.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/jh.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/trove.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/geotools_repast.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/violinstrings-1.0.2.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/jgap.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/joone.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/jmf.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/jakarta-poi.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/openmap.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/ProActive.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/lib/colt.jar"/>
+    <pathelement location="${module.repast-3.1.basedir}/demos/demos.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.repast-3.1">
+    <patternset refid="ignored.files"/>
+    <exclude name="Acme/**"/>
+    <exclude name="anl/**"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.repast-3.1">
+    <patternset refid="excluded.from.module.repast-3.1"/>
+  </patternset>
+  
+  <path id="repast-3.1.module.sourcepath">
+    <dirset dir="${module.repast-3.1.basedir}">
+      <include name="demos/src"/>
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  <path id="repast-3.1.module.test.sourcepath">
+    <dirset dir="${module.repast-3.1.basedir}">
+      <include name="test"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.repast-3.1" depends="compile.module.repast-3.1.production,compile.module.repast-3.1.tests" description="Compile module repast-3.1"/>
+  
+  <target name="compile.module.repast-3.1.production" description="Compile module repast-3.1; production classes">
+    <mkdir dir="${repast-3.1.output.dir}"/>
+    <javac2 destdir="${repast-3.1.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
+      <compilerarg line="${compiler.args.repast-3.1}"/>
+      <bootclasspath refid="repast-3.1.module.bootclasspath"/>
+      <classpath refid="repast-3.1.module.classpath"/>
+      <src refid="repast-3.1.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.repast-3.1"/>
+    </javac2>
+    
+    <copy todir="${repast-3.1.output.dir}">
+      <fileset dir="${module.repast-3.1.basedir}/demos/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.repast-3.1.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.repast-3.1.tests" depends="compile.module.repast-3.1.production" description="compile module repast-3.1; test classes" unless="skip.tests">
+    <mkdir dir="${repast-3.1.testoutput.dir}"/>
+    <javac2 destdir="${repast-3.1.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
+      <compilerarg line="${compiler.args.repast-3.1}"/>
+      <classpath refid="repast-3.1.module.classpath"/>
+      <classpath location="${repast-3.1.output.dir}"/>
+      <src refid="repast-3.1.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.repast-3.1"/>
+    </javac2>
+    
+    <copy todir="${repast-3.1.testoutput.dir}">
+      <fileset dir="${module.repast-3.1.basedir}/test">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.repast-3.1" description="cleanup module">
+    <delete dir="${repast-3.1.output.dir}"/>
+    <delete dir="${repast-3.1.testoutput.dir}"/>
+  </target>
+</project>
